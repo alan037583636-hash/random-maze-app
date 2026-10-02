@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f7f8">
+    <title>午間候位叫號系統 | 國立臺灣海洋大學</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#top" aria-label="海大午間候位系統首頁">
+            <span class="brand-mark" aria-hidden="true">海</span>
+            <span class="brand-copy">
+                <strong>海大午間候位</strong>
+                <span>NTOU · CAMPUS DINING</span>
+            </span>
+        </a>
+        <div class="service-status"><span class="status-dot"></span>櫃台服務中</div>
+    </header>
+
+    <main id="top" class="page-shell">
+        <section class="intro" aria-labelledby="page-title">
+            <div>
+                <p class="eyebrow">LUNCH QUEUE · 學生餐廳</p>
+                <h1 id="page-title">午餐時段，<span>從容候位。</span></h1>
+                <p class="intro-copy">取號後可以先去忙，留意叫號就能準時入座。</p>
+            </div>
+            <div class="intro-tide" aria-hidden="true">
+                <span class="tide-line tide-line-one"></span>
+                <span class="tide-line tide-line-two"></span>
+                <span class="tide-label">12:00 — 14:00</span>
+            </div>
+        </section>
+
+        <section class="queue-overview" aria-label="目前候位概況">
+            <div class="overview-label"><span class="live-indicator"></span>即時候位狀況</div>
+            <div class="overview-count"><strong id="queue-count">0</strong><span>組等候中</span></div>
+            <p class="overview-note">依取號順序安排入座</p>
+        </section>
+
+        <div class="workspace-grid">
+            <div class="primary-column">
+                <section class="panel registration-panel" aria-labelledby="registration-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-kicker">JOIN THE LINE</p>
+                            <h2 id="registration-title">登記候位</h2>
+                        </div>
+                        <span class="step-number">01</span>
+                    </div>
+                    <form id="registration-form" class="registration-form">
+                        <label class="field">
+                            <span>姓名</span>
+                            <input id="guest-name" name="name" type="text" placeholder="輸入候位姓名" autocomplete="name" maxlength="30" required>
+                        </label>
+                        <label class="field">
+                            <span>聯絡電話</span>
+                            <input id="guest-phone" name="phone" type="tel" placeholder="例如 0912 345 678" autocomplete="tel" maxlength="20" required>
+                        </label>
+                        <button class="button button-primary" type="submit">
+                            <span>登記取號</span><span aria-hidden="true">→</span>
+                        </button>
+                    </form>
+                    <div id="ticket-result" class="ticket-result" role="status" aria-live="polite" hidden></div>
+                </section>
+
+                <section class="panel lookup-panel" aria-labelledby="lookup-title">
+                    <div class="panel-heading compact-heading">
+                        <div>
+                            <p class="section-kicker">CHECK YOUR PLACE</p>
+                            <h2 id="lookup-title">等候查詢</h2>
+                        </div>
+                        <span class="step-number">02</span>
+                    </div>
+                    <form id="lookup-form" class="lookup-form">
+                        <label class="field lookup-field">
+                            <span>輸入號碼牌</span>
+                            <input id="lookup-ticket" name="ticket" type="text" placeholder="例如 Q001" autocomplete="off" required>
+                        </label>
+                        <button class="button button-secondary" type="submit">查詢位置</button>
+                    </form>
+                    <p id="lookup-result" class="lookup-result" role="status" aria-live="polite">輸入號碼牌，查看目前等候位置。</p>
+                </section>
+            </div>
+
+            <section class="panel roster-panel" aria-labelledby="roster-title">
+                <div class="panel-heading roster-heading">
+                    <div>
+                        <p class="section-kicker">NOW WAITING</p>
+                        <h2 id="roster-title">候位名單 <span id="roster-count" class="roster-count">0</span></h2>
+                    </div>
+                    <span class="queue-symbol" aria-hidden="true">FIFO</span>
+                </div>
+                <div class="queue-direction" aria-hidden="true">
+                    <span>隊首 · 下一組</span><span class="direction-line"></span><span>隊尾</span>
+                </div>
+                <ol id="queue-list" class="queue-list" aria-live="polite" aria-relevant="additions removals">
+                    <li class="empty-state">
+                        <span class="empty-wave" aria-hidden="true">〰</span>
+                        <strong>目前沒有等候者</strong>
+                        <span>完成登記後，名單會顯示在這裡。</span>
+                    </li>
+                </ol>
+                <div class="counter-area">
+                    <div class="counter-copy">
+                        <span class="counter-label">櫃台叫號</span>
+                        <span id="counter-hint">準備好為下一組安排座位</span>
+                    </div>
+                    <button id="call-next" class="button button-call" type="button" disabled>
+                        <span aria-hidden="true">↗</span> 叫號入座
+                    </button>
+                </div>
+                <div id="announcement" class="announcement" role="status" aria-live="assertive" hidden></div>
+            </section>
+        </div>
+
+        <footer class="page-footer"><span>國立臺灣海洋大學</span><span>讓每一餐，都有剛好的等待。</span></footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
